@@ -1,16 +1,8 @@
 # Tarea 5 · Manipular el DOM
 
-**Autor:** [Tu nombre y apellidos] · Desarrollo Web en Entorno Cliente (DWEC) · 2.º DAW · Curso 2026-27
+**Autor:** Carlos Posadas Kalman · Desarrollo Web en Entorno Cliente (DWEC) · 2.º DAW · Curso 2026-27
 
-> **Plantilla de la tarea 5.** Cómo usarla:
->
-> 1. Copia esta carpeta en tu repositorio de DWEC y cámbiale el nombre a `tema05`.
-> 2. `index.html` ya está maquetado: es la página que vas a manipular. No cambies los `id` ni las clases que usa el JavaScript.
-> 3. `js/app.js` trae una función por botón con `TODO`, y modelos en los ejercicios 1, 3 y 6.
-> 4. Sustituye las imágenes de `capturas/` por las tuyas, **con el mismo nombre**.
-> 5. Todo lo que va entre [corchetes] es un hueco: cámbialo por lo tuyo. Al terminar, borra este aviso.
 
-[Una o dos líneas: qué hay en esta carpeta y cómo se ve. Por ejemplo: abrir la carpeta en VS Code, pulsar **Go Live** y probar los botones con la consola abierta (F12).]
 
 ## Capturas
 
@@ -18,46 +10,49 @@
 
 <img src="capturas/a-pagina.png" alt="La página recién cargada con mi nombre en la navbar" width="600">
 
-[Qué se ve: tu nombre y los tres párrafos de partida.]
 
 ### b) Ejercicios 1 y 2
 
 <img src="capturas/b-ej1-ej2.png" alt="Los párrafos después de aplicar los cambios y añadir dos párrafos" width="600">
 
-[Qué ha cambiado en cada párrafo y qué selector has usado para cada uno.]
+En el ejercicio 1 he utilizado distintos selectores de JavaScript para modificar los tres párrafos. El primero se selecciona mediante getElementById() y se cambia su contenido con textContent. El segundo se selecciona mediante querySelector() y se resalta añadiendo la clase bg-warning-subtle. El tercero se selecciona mediante querySelectorAll() y se le añade la clase text-danger para mostrarlo en rojo.
+
+En el ejercicio 2 he utilizado createElement() para crear nuevos párrafos y append() para añadirlos al contenedor. También he utilizado remove() para eliminar el último párrafo.
 
 ### c) Ejercicio 3: resaltado al pasar el ratón
 
-![Un párrafo resaltado con el ratón encima](capturas/c-ej3-resaltado.png)
+<img src="capturas/c-ej3-resaltado.png" alt="Un párrafo resaltado con el ratón encima" width="600">
 
-[Qué párrafo está resaltado y qué pasa con los párrafos que añades después.]
+Al pulsar el botón de activar resaltado y pasar el ratón por encima de un párrafo, este cambia su color de fondo gracias a la clase bg-body-secondary. Cuando el ratón sale del párrafo, se elimina esa clase y vuelve a su aspecto original.
+
+Para conseguirlo he usado los eventos "mouseenter" y "mouseleave" junto con "classList.add()" y "classList.remove()".
 
 ### d) Ejercicio 4: `<b>hola</b>` con innerHTML
 
 <img src="capturas/d-ej4-innerhtml.png" alt="El primer párrafo tras usar innerHTML" width="600">
 
-[Qué salía con «Cambiar texto» y qué sale con innerHTML.]
+Al escribir <b>hola</b> y pulsar «Cambiar texto», aparece literalmente <b>hola</b> en el primer párrafo, porque textContent trata las etiquetas como texto normal.
 
 ### e) Ejercicio 5: la lista de tareas
 
-![La lista con tres tareas y una marcada](capturas/e-ej5-lista.png)
+<img src="capturas/e-ej5-lista.png" alt="La lista con tres tareas y una marcada" width="600">
 
-[Tres tareas, una marcada, antes de pulsar «Borrar completadas».]
+En este ejercicio he creado una lista de tareas utilizando JavaScript. He añadido tres tareas mediante createElement() y append(), y cada una tiene una casilla de verificación de tipo checkbox.
+
 
 ### f) Ejercicio 6: los datos de la ventana en el móvil
 
 <img src="capturas/f-ej6-movil.png" alt="Los datos de la ventana en el modo móvil" width="300">
 
-[Qué punto de corte sale en el móvil y cuál en tu ordenador.]
+En este ejercicio he utilizado el objeto window para obtener las dimensiones de la ventana del navegador y determinar el punto de corte de Bootstrap.
 
 ## Reflexión
 
-[De 5 a 8 líneas: ¿qué diferencia hay entre textContent e innerHTML y por qué no se debe meter en innerHTML lo que escribe el usuario? Pon como ejemplo lo que pasó con `<b>hola</b>`.]
+La principal diferencia entre textContent e innerHTML es la forma en la que interpretan el contenido.
+textContent introduce el texto literalmente, sin interpretar las etiquetas HTML.
+En cambio, innerHTML interpreta las etiquetas y permite modificar la estructura HTML.
+Por ejemplo, al escribir <b>hola</b> con textContent, aparecen las etiquetas en pantalla.
+Con innerHTML, el navegador interpreta la etiqueta y muestra la palabra en negrita.
+No es recomendable utilizar innerHTML directamente con contenido introducido por el usuario, ya que podría contener código malicioso.
+Esto puede provocar ataques XSS, por lo que es más seguro utilizar textContent cuando solo necesitamos mostrar texto.
 
-## Fuentes
-
-- [Título de la página](https://enlace-a-la-fuente)
-
-## Uso de IA
-
-[Si has usado IA: qué herramienta, para qué y qué hiciste después con su respuesta. Si no la has usado, borra este apartado.]
