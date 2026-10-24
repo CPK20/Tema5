@@ -17,11 +17,9 @@ console.log("app.js cargado");
 
 // ============================================================
 // Ejercicio 1 · Selectores y modificación
-// Un selector distinto para cada párrafo
-// ============================================================
 
 function aplicarCambios() {
-  // El modelo: el primer párrafo, por su id
+  
   const primero = document.getElementById("primero");
   primero.textContent = "Texto modificado por JavaScript";
   
@@ -36,21 +34,41 @@ function aplicarCambios() {
 }
 
 
-// ============================================================
 // Ejercicio 2 · Crear y eliminar nodos
-// ============================================================
 
 function anadirParrafo() {
-  // TODO: crea un <p> con document.createElement().
-  // TODO: dale el texto «Párrafo nuevo N», donde N es el número de párrafos que habrá en #contenido
-  //       (pista: document.querySelector("#contenido").children.length).
-  // TODO: cuélgalo al final de #contenido con append().
+
+    const contenido = document.querySelector("#contenido");
+
+    const parrafo = document.createElement("p");
+
+    const numero = contenido.children.length + 1;
+
+    parrafo.textContent = "Párrafo nuevo " + numero;
+
+    contenido.append(parrafo);
+
+    console.log("Párrafo añadido correcramente");
+  
 }
 
 function eliminarUltimo() {
-  // TODO: busca el último párrafo de #contenido (lastElementChild).
-  // TODO: si es null (ya no queda ninguno), muestra el aviso #aviso2 quitándole la clase "d-none".
-  //       Si no, bórralo con remove().
+  
+    const contenido = document.querySelector("#contenido");
+
+    const ultimo = contenido.lastElementChild;
+
+    const aviso = document.getElementById("aviso2");
+
+    if (ultimo === null) {
+        aviso.classList.remove("d-none");
+        console.log("No hay más párrafos para eliminar");
+  } else {
+      ultimo.remove();
+      aviso.classList.add("d-none");
+      console.log("Se ha eliminado el último párrafo");
+  }
+  
 }
 
 
