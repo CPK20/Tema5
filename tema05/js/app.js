@@ -77,6 +77,7 @@ function eliminarUltimo() {
 
 
 function activarResaltado() {
+  
   const parrafos = document.querySelectorAll("#contenido p");
 
   for (const parrafo of parrafos) {
@@ -94,25 +95,53 @@ function activarResaltado() {
 }
 
 
-// ============================================================
+
 // Ejercicio 4 · Cambiar el primer párrafo
-// ============================================================
+
 
 function cambiarTexto() {
-  // TODO: lee lo escrito en #nuevoTexto con value y quítale los espacios de los extremos con trim().
-  // TODO: si está vacío, muestra el error #error4 (quítale "d-none") y no cambies nada.
-  // TODO: si no, pon ese texto en el primer párrafo de #contenido con textContent y oculta el error.
+
+  const texto = document.getElementById("nuevoTexto").value.trim();
+  const error = document.getElementById("error4");
+
+  if (texto === "") {
+      error.classList.remove("d-none");
+
+  } else {
+      const primero = document.querySelector("#contenido p");
+      if (primero !== null) {
+          primero.textContent = texto;
+      }
+      error.classList.add("d-none");
+  }
+  
+  console.log("Se ha intentado cambiar el texto");
 }
 
 function cambiarConHtml() {
-  // TODO: lo mismo que cambiarTexto(), pero con innerHTML.
-  //       Prueba las dos con <b>hola</b> y explica en el README qué diferencia ves y por qué es peligroso.
+
+  const texto = document.getElementById("nuevoTexto").value.trim();
+  const error = document.getElementById("error4");
+
+  if (texto === " ") {
+      error.classList.remove("d-none");
+
+  } else {
+      const primero = document.querySelector("#contenido p");
+      if (primero !== null) {
+          primero.innerHTML = texto;
+      }
+      error.classList.add("d-none");
+  }
+
+  console.log("Se ha probado el cambio con innerHTML");
+
 }
 
 
-// ============================================================
+
 // Ejercicio 5 · Lista de tareas
-// ============================================================
+
 
 function anadirTarea() {
   // TODO: lee el texto de #tareaInput (value + trim). Si está vacío, muestra un mensaje en #error5.
