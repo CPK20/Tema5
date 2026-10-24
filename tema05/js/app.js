@@ -144,27 +144,73 @@ function cambiarConHtml() {
 
 
 function anadirTarea() {
-  // TODO: lee el texto de #tareaInput (value + trim). Si está vacío, muestra un mensaje en #error5.
-  // TODO: si no, crea un <li class="list-group-item"> con dos elementos dentro:
-  //         · un <input> de tipo "checkbox" con la clase "form-check-input",
-  //         · un <span> con el texto de la tarea (textContent).
-  //       Cuelga el <li> de #listaTareas y vacía la casilla (value = "").
-  // TODO: actualiza #totalTareas con el número de <li> que hay en la lista.
+
+  const input = document.getElementById("tareaInput");
+    
+    const texto = input.value.trim();
+    const error = document.getElementById("error5");
+
+    if (texto === "") {
+        error.classList.remove("d-none");
+    } else {
+        error.classList.add("d-none");
+
+        const li = document.createElement("li");
+        li.classList.add("list-group-item");
+
+        const checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.classList.add("form-check-input");
+
+        const span = document.createElement("span");
+        span.textContent = texto;
+
+        li.append(checkbox, span);
+
+        const lista = document.getElementById("listaTareas");
+        lista.append(li);
+
+        input.value = "";
+
+        const total = document.getElementById("totalTareas");
+        total.textContent = lista.querySelectorAll("li").length;
+
+        console.log("Tarea añadida correctamente");
+    }
+
 }
 
 function borrarCompletadas() {
-  // TODO: selecciona las casillas marcadas: document.querySelectorAll("#listaTareas input:checked").
-  // TODO: si no hay ninguna, avisa en #error5. Si hay, recórrelas con for…of y borra el <li> de cada una
-  //       (el <li> es el padre de la casilla: parentElement).
-  // TODO: actualiza #totalTareas.
+
+  const marcadas = document.querySelectorAll("#listaTareas input:checked");
+  const error = document.getElementById("error5");
+
+    if (marcadas.length === 0) {
+        error.classList.remove("d-none");
+    } else {
+        for (const casilla of marcadas) {
+            casilla.parentElement.remove();
+        }
+
+        error.classList.add("d-none");
+    }
+
+    const lista = document.getElementById("listaTareas");
+    const total = document.getElementById("totalTareas");
+
+    total.textContent = lista.querySelectorAll("li").length;
+
+    console.log("Tareas completadas eliminadas");
+  
 }
 
 
-// ============================================================
+
 // Ejercicio 6 · Datos de la ventana (BOM)
-// ============================================================
+
 
 function verDatosVentana() {
+  
   // El modelo: el tamaño de la ventana
   const ancho = window.innerWidth;
   const alto = window.innerHeight;
