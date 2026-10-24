@@ -1,5 +1,5 @@
 /*
-  Tarea 5 · DWEC · [Tu nombre y apellidos]
+  Tarea 5 · DWEC · Carlos Posadas Kalman
   Manipular el DOM.
 
   Cómo usar esta plantilla:
@@ -24,10 +24,15 @@ function aplicarCambios() {
   // El modelo: el primer párrafo, por su id
   const primero = document.getElementById("primero");
   primero.textContent = "Texto modificado por JavaScript";
+  
+  const segundo = document.querySelector(".segundo");
+  segundo.classList.add("bg-warning-subtle");
 
-  // TODO: el segundo párrafo, con querySelector y su clase (.segundo): resáltalo con la clase "bg-warning-subtle".
-  // TODO: el tercero, con querySelectorAll("#contenido p") y su posición en la lista: ponlo en rojo con "text-danger".
-  // TODO: un console.log() que diga que se han aplicado los cambios.
+  const parrafos = document.querySelectorAll("#contenido p");
+  parrafos[2].classList.add("text-danger");
+  
+  console.log("Cambios aplicados correctamente");
+  
 }
 
 
