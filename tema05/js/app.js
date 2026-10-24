@@ -72,24 +72,25 @@ function eliminarUltimo() {
 }
 
 
-// ============================================================
+
 // Ejercicio 3 · Resaltar al pasar el ratón
-// ============================================================
+
 
 function activarResaltado() {
   const parrafos = document.querySelectorAll("#contenido p");
 
   for (const parrafo of parrafos) {
-    // addEventListener("mouseenter", ...) ejecuta la función cuando el ratón entra en el párrafo.
-    // Los eventos los veremos a fondo en el tema 9: de momento, copia este modelo.
     parrafo.addEventListener("mouseenter", function () {
       parrafo.classList.add("bg-body-secondary");
     });
+    
+    parrafo.addEventListener("mouseleave", function () {
+        parrafo.classList.remove("bg-body-secondary");
+    });
 
-    // TODO: lo mismo con "mouseleave" (cuando el ratón sale) para quitar la clase.
   }
 
-  // TODO: un console.log() que diga en cuántos párrafos se ha activado (parrafos.length).
+  console.log("Resaltado activado en " + parrafos.length + " párrafos");
 }
 
 
